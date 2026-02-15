@@ -10,6 +10,7 @@
   <table border="1">
     <thead>
       <tr>
+        <th>順位</th>
         <th>名前</th>
         <th>勝</th>
         <th>負</th>
@@ -20,7 +21,7 @@
   </table>
 
   <script>
-    const GAS_URL = "https://script.google.com/macros/s/AKfycbyIllOazIiU8baRV0KZDAr6iK2pSmKs2xnGk_OgJ1_iE-sw8FP_OFU2vSlu6T81rovmsA/exec";
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbzc51HnkouSrXdzYfz5BYoI_BcjqHKUJwgGL6I42gbi2EF92kQSjyl-9Wwx9ORgIEJwVw/exec";
 
     fetch(GAS_URL)
       .then(res => res.json())
@@ -28,12 +29,15 @@
         const tbody = document.getElementById("ranking");
         data.forEach(row => {
           const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${row.players}</td>
-            <td>${row.win}</td>
-            <td>${row.lose}</td>
-            <td>${row.point}</td>
-          `;
+  tr.innerHTML = `
+  <td>${row.rank}</td>
+  <td>${row.name}</td>
+  <td>${row.win}</td>
+  <td>${row.lose}</td>
+  <td>${row.point}</td>
+`;
+
+
           tbody.appendChild(tr);
         });
       });
