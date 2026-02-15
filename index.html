@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>城ドラ ランキング</title>
+</head>
+<body>
+  <h1>城ドラ ランキング</h1>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>勝</th>
+        <th>負</th>
+        <th>ポイント</th>
+      </tr>
+    </thead>
+    <tbody id="ranking"></tbody>
+  </table>
+
+  <script>
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbyIllOazIiU8baRV0KZDAr6iK2pSmKs2xnGk_OgJ1_iE-sw8FP_OFU2vSlu6T81rovmsA/exec";
+
+    fetch(GAS_URL)
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById("ranking");
+        data.forEach(row => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${row.players}</td>
+            <td>${row.win}</td>
+            <td>${row.lose}</td>
+            <td>${row.point}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      });
+  </script>
+</body>
+</html>
